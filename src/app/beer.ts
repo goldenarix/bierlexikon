@@ -10,8 +10,5 @@ export interface Beer {
     bewertung: number;
     herkunftsland: string;
     preis: number;
-    b
-
-
-
+    schlagwörter?: [];
 }

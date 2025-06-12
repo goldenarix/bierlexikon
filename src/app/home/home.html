@@ -18,3 +18,50 @@
   </mat-card-actions>
 
 </mat-card>
+
+
+
+
+<section class="filter-section">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Biere filtern</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="filter-controls">
+        <mat-form-field appearance="outline">
+          <mat-label>Nach Bier-Name suchen</mat-label>
+          <input matInput #beerNameInput placeholder="z.B. Augustiner">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+          <mat-label>Biertyp</mat-label>
+          <mat-select #beerTypeSelect>
+            <mat-option >Alle Typen</mat-option>
+            <mat-option>Lager</mat-option>
+            <mat-option >Weizen</mat-option>
+            <mat-option>Pils</mat-option>
+            <mat-option >Stout</mat-option>
+            <mat-option>IPA</mat-option>
+          </mat-select>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+          <mat-label>Land</mat-label>
+          <input matInput #countryInput placeholder="z.B. Deutschland">
+          <mat-icon matSuffix>flag</mat-icon>
+        </mat-form-field>
+      </div>
+      
+      <div class="filter-buttons">
+        <button mat-raised-button color="primary">
+          Filter anwenden
+        </button>
+        <button mat-button>
+          Filter zurücksetzen
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</section>
