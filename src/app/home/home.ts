@@ -2,6 +2,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 //MatCards
 import {MatCardModule} from '@angular/material/card'
@@ -14,7 +15,7 @@ import {Beer} from '../beer'
 
 @Component({
   selector: 'app-home',
-  imports: [MatCardModule, MatButtonModule, MatInputModule],
+  imports: [MatCardModule, MatButtonModule, MatInputModule, RouterLink],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
