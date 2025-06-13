@@ -10,17 +10,19 @@ import { MatIconModule } from '@angular/material/icon';
 import { Beer } from '../beer';
 import { BierlexikonService } from '../service/bierlexikon';
 import { BeerCardComponent } from '../beer-card/beer-card';
+import { AddYourBeer } from "../add-your-beer/add-your-beer";
 
 @Component({
   selector: 'app-home',
   imports: [
-    CommonModule, 
+    CommonModule,
     RouterModule,
-    MatCardModule, 
-    MatButtonModule, 
+    MatCardModule,
+    MatButtonModule,
     MatIconModule,
-    BeerCardComponent
-  ],
+    BeerCardComponent,
+    AddYourBeer
+],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })

@@ -1,130 +1,620 @@
+/* ===== ULTRA-MODERNE HOME-SEITE STYLES ===== */
+/* Performance-optimiertes Premium-Design für die Homepage */
+
+/* ===== SPEKTAKULÄRER HAUPT-TITEL ===== */
 h1 {
-  color: #FF6B35;
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: 2.5rem;
-  font-weight: 600;
+  font-size: clamp(2.5rem, 5vw, 4rem) !important; /* Responsive Schriftgröße */
+  font-weight: 900 !important;
+  text-align: center !important;
+  margin: 2rem auto 3rem auto !important;
+  padding: 1.5rem 2rem !important;
+  position: relative;
+  
+  /* Holographischer Gradient-Text */
+  background: linear-gradient(135deg, 
+    var(--accent-color) 0%,
+    var(--primary-color) 20%,
+    #FFD700 40%,
+    var(--primary-color) 60%,
+    var(--accent-color) 80%,
+    var(--primary-color) 100%) !important;
+  background-size: 300% 300% !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  
+  /* Subtitle Animation für lebendigen Effekt */
+  animation: titleShimmer 6s ease-in-out infinite !important;
+  
+  /* Premium-Schatten für Tiefe */
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1)) 
+          drop-shadow(0 8px 16px rgba(212, 175, 55, 0.2));
+  
+  /* Performance-Optimierung */
+  will-change: background-position;
+  transform: translateZ(0);
 }
 
-h2 {
-  color: #333;
-  margin: 2rem 0 1.5rem 0;
-  font-size: 1.8rem;
-  font-weight: 600;
+/* Elegante Shimmer-Animation für den Titel */
+@keyframes titleShimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
-/* Hero Card - Orange Gradient */
+/* Magisches Glow um den Titel */
+h1::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: radial-gradient(ellipse at center, 
+    rgba(212, 175, 55, 0.2) 0%,
+    rgba(255, 215, 0, 0.1) 50%,
+    transparent 70%);
+  border-radius: 20px;
+  z-index: -1;
+  animation: titleGlow 4s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes titleGlow {
+  0%, 100% { 
+    transform: scale(1); 
+    opacity: 0.5; 
+  }
+  50% { 
+    transform: scale(1.05); 
+    opacity: 0.8; 
+  }
+}
+
+/* ===== LUXURIÖSE HERO-CARD ===== */
 .hero-card {
-  margin-bottom: 3rem;
-  background: linear-gradient(135deg, #FFD700 0%, #FF6B35 100%);
-  color: white;
-  border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(255, 107, 53, 0.3);
+  /* Premium-Glasmorphismus-Design */
+  background: linear-gradient(145deg, 
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(212, 175, 55, 0.1) 100%) !important;
+  backdrop-filter: blur(25px) saturate(1.3) !important;
+  border: 2px solid rgba(255, 255, 255, 0.4) !important;
+  border-radius: 32px !important;
+  
+  /* Cinematische Schatten für maximale Tiefe */
+  box-shadow: 
+    0 25px 60px rgba(0, 0, 0, 0.15),
+    0 12px 30px rgba(0, 0, 0, 0.1),
+    0 6px 12px rgba(212, 175, 55, 0.2),
+    inset 0 2px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -2px 0 rgba(212, 175, 55, 0.2) !important;
+  
+  /* Flüssige Animationen */
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1) !important;
+  margin: 0 auto 4rem auto !important;
+  max-width: 800px !important;
+  position: relative;
+  overflow: hidden;
+  
+  /* Performance-Optimierung */
+  will-change: transform, box-shadow;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
+/* Animierter Premium-Border */
+.hero-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 34px;
+  background: linear-gradient(45deg, 
+    rgba(212, 175, 55, 0.8) 0%,
+    rgba(255, 215, 0, 0.9) 25%,
+    rgba(212, 175, 55, 0.6) 50%,
+    rgba(139, 69, 19, 0.7) 75%,
+    rgba(212, 175, 55, 0.8) 100%);
+  background-size: 400% 400%;
+  animation: borderFlow 8s ease-in-out infinite;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  z-index: -1;
+  will-change: background-position, opacity;
+}
+
+@keyframes borderFlow {
+  0%, 100% { background-position: 0% 50%; }
+  25% { background-position: 100% 50%; }
+  50% { background-position: 100% 100%; }
+  75% { background-position: 0% 100%; }
+}
+
+/* Spektakulärer Hover-Effekt für Hero-Card */
+.hero-card:hover {
+  transform: translateY(-8px) scale(1.02) !important;
+  box-shadow: 
+    0 35px 80px rgba(0, 0, 0, 0.2),
+    0 18px 40px rgba(212, 175, 55, 0.3),
+    inset 0 3px 0 rgba(255, 255, 255, 1) !important;
+  border-color: rgba(212, 175, 55, 0.5) !important;
+}
+
+.hero-card:hover::before {
+  opacity: 1;
+}
+
+/* ===== MODERNE CARD-HEADER GESTALTUNG ===== */
 .hero-card mat-card-header {
-  padding-bottom: 0;
+  padding: 2rem 2rem 1rem 2rem !important;
+  text-align: center !important;
+  position: relative;
 }
 
+/* Eleganter Titel-Stil */
 .hero-card mat-card-title {
-  color: white;
-  font-size: 2.2rem;
-  font-weight: 700;
-  margin-bottom: 8px;
+  font-size: 2.2rem !important;
+  font-weight: 800 !important;
+  background: linear-gradient(135deg, 
+    var(--accent-color) 0%,
+    var(--primary-color) 100%) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  margin-bottom: 1rem !important;
+  line-height: 1.3 !important;
+  
+  /* Sanfte Hover-Animation */
+  transition: transform 0.3s ease;
+  will-change: transform;
 }
 
+.hero-card:hover mat-card-title {
+  transform: scale(1.03);
+}
+
+/* Stilvoller Untertitel */
 .hero-card mat-card-subtitle {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 1.1rem;
-  font-weight: 400;
+  font-size: 1.2rem !important;
+  font-weight: 600 !important;
+  color: var(--text-secondary) !important;
+  opacity: 0.9 !important;
+  margin-bottom: 0 !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
 }
 
+/* ===== PREMIUM CARD-CONTENT ===== */
 .hero-card mat-card-content {
-  color: rgba(255, 255, 255, 0.95);
-  font-size: 1.1rem;
-  line-height: 1.6;
+  padding: 1rem 2rem 2rem 2rem !important;
+  text-align: center !important;
 }
 
 .hero-card mat-card-content p {
-  margin: 16px 0;
+  font-size: 1.15rem !important;
+  line-height: 1.7 !important;
+  color: var(--text-secondary) !important;
+  margin: 0 !important;
+  max-width: 600px !important;
+  margin: 0 auto !important;
+  font-weight: 500 !important;
+  
+  /* Elegante Hintergrund-Hervorhebung */
+  padding: 1.5rem !important;
+  background: linear-gradient(145deg, 
+    rgba(248, 246, 240, 0.6), 
+    rgba(255, 255, 255, 0.4)) !important;
+  backdrop-filter: blur(8px) !important;
+  border-radius: 16px !important;
+  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
 }
 
+/* ===== SPEKTAKULÄRER ACTION-BUTTON ===== */
 .hero-card mat-card-actions {
-  padding-top: 0;
+  padding: 1rem 2rem 2rem 2rem !important;
+  display: flex !important;
+  justify-content: center !important;
 }
 
-.hero-card button {
-  margin-right: 12px;
-  font-weight: 600;
+/* Ultra-moderner Button-Stil */
+.hero-card button[mat-raised-button] {
+  padding: 1.2rem 3rem !important;
+  font-size: 1.1rem !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  border-radius: 20px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  
+  /* Premium-Gradient-Hintergrund */
+  background: linear-gradient(135deg, 
+    var(--primary-color) 0%,
+    var(--primary-dark) 50%,
+    var(--accent-color) 100%) !important;
+  background-size: 200% 200% !important;
+  animation: buttonGradientShift 4s ease-in-out infinite !important;
+  
+  /* Luxuriöse Schatten */
+  box-shadow: 
+    0 8px 24px rgba(212, 175, 55, 0.4),
+    0 4px 8px rgba(0, 0, 0, 0.15),
+    inset 0 2px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.1) !important;
+  
+  /* Flüssige Animationen */
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1) !important;
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+  color: white !important;
+  
+  /* Performance-Optimierung */
+  will-change: transform, box-shadow, background-position;
+  transform: translateZ(0);
 }
 
-/* Featured Section */
+/* Animierter Button-Gradient */
+@keyframes buttonGradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Schimmer-Effekt für den Button */
+.hero-card button[mat-raised-button]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.4) 50%, 
+    transparent 100%);
+  transition: left 0.6s ease;
+  z-index: 1;
+}
+
+/* Spektakulärer Button-Hover */
+.hero-card button[mat-raised-button]:hover {
+  transform: translateY(-4px) scale(1.05) !important;
+  box-shadow: 
+    0 16px 40px rgba(212, 175, 55, 0.6),
+    0 8px 16px rgba(0, 0, 0, 0.2),
+    inset 0 3px 0 rgba(255, 255, 255, 0.5) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.hero-card button[mat-raised-button]:hover::before {
+  left: 100%;
+}
+
+/* Button-Klick-Feedback */
+.hero-card button[mat-raised-button]:active {
+  transform: translateY(-2px) scale(1.02) !important;
+  transition: all 0.1s ease;
+}
+
+/* ===== FEATURED SECTION MODERNISIERUNG ===== */
 .featured-section {
-  margin-bottom: 2rem;
+  padding: 3rem 0 !important;
+  position: relative;
+  background: linear-gradient(135deg, 
+    rgba(248, 246, 240, 0.3) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(212, 175, 55, 0.05) 100%);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  margin: 2rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Beer Grid */
+/* Moderne Section-Überschrift */
+.featured-section h2 {
+  font-size: 2.5rem !important;
+  font-weight: 800 !important;
+  text-align: center !important;
+  margin-bottom: 2.5rem !important;
+  position: relative;
+  
+  /* Eleganter Gradient-Text */
+  background: linear-gradient(135deg, 
+    var(--accent-color) 0%,
+    var(--primary-color) 100%) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  
+  /* Sanfte Animation */
+  animation: sectionTitleFloat 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes sectionTitleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Dekorative Linie unter der Überschrift */
+.featured-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, 
+    transparent 0%,
+    var(--primary-color) 50%,
+    transparent 100%);
+  border-radius: 2px;
+  animation: lineGlow 3s ease-in-out infinite;
+}
+
+@keyframes lineGlow {
+  0%, 100% { opacity: 0.6; transform: translateX(-50%) scaleX(1); }
+  50% { opacity: 1; transform: translateX(-50%) scaleX(1.2); }
+}
+
+/* ===== BEER-GRID OPTIMIERUNG ===== */
 .beer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  gap: 16px;
-  margin-top: 1rem;
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
+  gap: 2rem !important;
+  padding: 2rem 0 !important;
+  
+  /* Performance-Optimierung für das Grid */
+  transform: translateZ(0);
+  will-change: contents;
 }
 
-/* No Results */
-.no-results {
-  grid-column: 1 / -1;
-  text-align: center;
-  padding: 3rem 2rem;
-  background: #f5f5f5;
-}
-
-.no-results-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-
-.no-results-content mat-icon {
-  font-size: 3rem;
-  width: 3rem;
-  height: 3rem;
-  color: #ccc;
-}
-
-.no-results-content h3 {
-  color: #666;
-  margin: 0;
-}
-
-.no-results-content p {
-  color: #999;
-  margin: 0;
-}
-
-/* Responsive Design */
+/* ===== RESPONSIVE DESIGN FÜR HOME ===== */
 @media (max-width: 768px) {
   h1 {
-    font-size: 2rem;
+    font-size: clamp(2rem, 4vw, 3rem) !important;
+    padding: 1rem !important;
+    margin: 1.5rem auto 2rem auto !important;
+  }
+  
+  .hero-card {
+    margin: 0 1rem 3rem 1rem !important;
+    border-radius: 24px !important;
+  }
+  
+  .hero-card mat-card-header {
+    padding: 1.5rem 1.5rem 0.5rem 1.5rem !important;
   }
   
   .hero-card mat-card-title {
-    font-size: 1.8rem;
+    font-size: 1.8rem !important;
   }
   
-  .beer-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
+  .hero-card mat-card-subtitle {
+    font-size: 1rem !important;
+  }
+  
+  .hero-card mat-card-content {
+    padding: 0.5rem 1.5rem 1.5rem 1.5rem !important;
+  }
+  
+  .hero-card mat-card-content p {
+    font-size: 1rem !important;
+    padding: 1rem !important;
   }
   
   .hero-card mat-card-actions {
-    flex-direction: column;
-    gap: 8px;
+    padding: 1rem 1.5rem 1.5rem 1.5rem !important;
   }
   
-  .hero-card button {
-    margin: 0;
-    width: 100%;
+  .hero-card button[mat-raised-button] {
+    padding: 1rem 2rem !important;
+    font-size: 1rem !important;
+  }
+  
+  .featured-section {
+    margin: 1rem;
+    padding: 2rem 1rem !important;
+    border-radius: 20px;
+  }
+  
+  .featured-section h2 {
+    font-size: 2rem !important;
+    margin-bottom: 2rem !important;
+  }
+  
+  .beer-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+    gap: 1.5rem !important;
+    padding: 1.5rem 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: clamp(1.5rem, 3.5vw, 2.5rem) !important;
+    padding: 0.5rem !important;
+    margin: 1rem auto 1.5rem auto !important;
+  }
+  
+  .hero-card {
+    margin: 0 0.5rem 2rem 0.5rem !important;
+    border-radius: 20px !important;
+  }
+  
+  .hero-card mat-card-title {
+    font-size: 1.5rem !important;
+  }
+  
+  .hero-card mat-card-subtitle {
+    font-size: 0.9rem !important;
+  }
+  
+  .hero-card button[mat-raised-button] {
+    padding: 0.8rem 1.5rem !important;
+    font-size: 0.9rem !important;
+    letter-spacing: 1px !important;
+  }
+  
+  .featured-section {
+    margin: 0.5rem;
+    padding: 1.5rem 0.5rem !important;
+  }
+  
+  .featured-section h2 {
+    font-size: 1.5rem !important;
+  }
+  
+  .beer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    padding: 1rem 0 !important;
+  }
+}
+
+/* ===== ACCESSIBILITY OPTIMIERUNG ===== */
+@media (prefers-reduced-motion: reduce) {
+  h1,
+  h1::before,
+  .hero-card::before,
+  .hero-card button[mat-raised-button],
+  .featured-section h2,
+  .featured-section h2::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .hero-card:hover {
+    transform: translateY(-2px) !important;
+  }
+  
+  .hero-card button[mat-raised-button]:hover {
+    transform: translateY(-1px) scale(1.01) !important;
+  }
+}
+
+/* ===== PERFORMANCE-OPTIMIERUNG ===== */
+/* GPU-Beschleunigung für alle animierten Elemente */
+h1,
+h1::before,
+.hero-card,
+.hero-card::before,
+.hero-card mat-card-title,
+.hero-card button[mat-raised-button],
+.hero-card button[mat-raised-button]::before,
+.featured-section h2,
+.featured-section h2::after {
+  will-change: transform, opacity, background-position;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* ===== EINGANGS-ANIMATIONEN ===== */
+/* Spektakuläre aber performance-optimierte Eingangs-Animation */
+@keyframes homeElementAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) translateZ(0);
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateZ(0);
+    filter: blur(0px);
+  }
+}
+
+/* Gestaffelte Animationen für alle Hauptelemente */
+h1 {
+  animation: homeElementAppear 1s cubic-bezier(0.23, 1, 0.32, 1) 0.2s both;
+}
+
+.hero-card {
+  animation: homeElementAppear 1s cubic-bezier(0.23, 1, 0.32, 1) 0.4s both;
+}
+
+.featured-section {
+  animation: homeElementAppear 1s cubic-bezier(0.23, 1, 0.32, 1) 0.6s both;
+}
+
+/* ===== DARK MODE UNTERSTÜTZUNG ===== */
+@media (prefers-color-scheme: dark) {
+  h1 {
+    background: linear-gradient(135deg, 
+      #f0f0f0 0%,
+      var(--primary-color) 50%,
+      #f0f0f0 100%) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+  }
+  
+  .hero-card {
+    background: linear-gradient(145deg, 
+      rgba(30, 30, 30, 0.95) 0%,
+      rgba(40, 40, 40, 0.9) 50%,
+      rgba(212, 175, 55, 0.1) 100%) !important;
+    border-color: rgba(212, 175, 55, 0.3) !important;
+  }
+  
+  .hero-card mat-card-title {
+    background: linear-gradient(135deg, 
+      #f0f0f0 0%,
+      var(--primary-color) 100%) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+  }
+  
+  .hero-card mat-card-subtitle {
+    color: #ccc !important;
+  }
+  
+  .hero-card mat-card-content p {
+    color: #ddd !important;
+    background: linear-gradient(145deg, 
+      rgba(40, 40, 40, 0.8), 
+      rgba(50, 50, 50, 0.6)) !important;
+    border-color: rgba(212, 175, 55, 0.2) !important;
+  }
+  
+  .featured-section {
+    background: linear-gradient(135deg, 
+      rgba(25, 25, 25, 0.4) 0%,
+      rgba(35, 35, 35, 0.2) 100%);
+    border-color: rgba(212, 175, 55, 0.2);
+  }
+  
+  .featured-section h2 {
+    background: linear-gradient(135deg, 
+      #f0f0f0 0%,
+      var(--primary-color) 100%) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+  }
+}
+
+/* ===== BROWSER-SPEZIFISCHE OPTIMIERUNGEN ===== */
+/* Safari-spezifische Optimierungen */
+@supports (-webkit-appearance: none) {
+  .hero-card,
+  .featured-section {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Firefox-spezifische Anpassungen */
+@-moz-document url-prefix() {
+  h1::before,
+  .hero-card::before,
+  .hero-card button[mat-raised-button] {
+    animation-duration: 8s; /* Langsamere Animation in Firefox */
   }
 }

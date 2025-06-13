@@ -46,50 +46,47 @@ export class OverviewComponent {
     this.loadAllBeers();
   }
 
-  // Die Haupt-Lade-Methode - jetzt ohne Observable-Komplexität
+  // Die Haupt-Lade-Methode 
   private loadAllBeers(): void {
-    // Direkter Aufruf des Services - sofortige Rückgabe
+   
     this.beers = this.bierlexikonService.getAllBeers();
     
-    // Alle drei Arrays mit den gleichen Daten füllen
-    this.allBeers = [...this.beers];        // Spread-Operator erstellt Kopie
-    this.filteredBeers = [...this.beers];   // Anfangs werden alle Biere angezeigt
+    this.allBeers = this.beers;        
+    this.filteredBeers = this.beers;   
     
     console.log('Alle Biere geladen:', this.beers.length);
   }
 
-  // Name-Filter-Methode - vereinfacht ohne Observable
   getBeerByName(name: string): void {
     if (!name) {
-      // Leerer String bedeutet Filter zurücksetzen
-      this.filteredBeers = [...this.allBeers];
+
+      this.filteredBeers = this.allBeers;
       console.log('Name-Filter zurückgesetzt');
     } else {
-      // Service aufrufen und Ergebnis direkt zuweisen
       this.filteredBeers = this.bierlexikonService.getBeerByName(name);
       console.log(`Nach Name '${name}' gefiltert:`, this.filteredBeers.length, 'Biere');
     }
   }
 
-  // Typ-Filter-Methode - ebenfalls vereinfacht
+  // Typ-Filter-Methode
   getBeerByType(type: string): void {
     if (!type) {
-      this.filteredBeers = [...this.allBeers];
+      this.filteredBeers = this.allBeers;
       console.log('Type-Filter zurückgesetzt');
     } else {
-      // Direkter Service-Aufruf ohne Observable-Handling
+      
       this.filteredBeers = this.bierlexikonService.getBeersByType(type);
       console.log(`Nach Typ '${type}' gefiltert:`, this.filteredBeers.length, 'Biere');
     }
   }
 
-  // Land-Filter - hier machst du die Filterung direkt in der Komponente
+  // Land-Filter 
   getBeerByCountry(country: string): void {
     if (!country) {
-      this.filteredBeers = [...this.allBeers];
+      this.filteredBeers = this.allBeers;
       console.log('Country-Filter zurückgesetzt');
     } else {
-      // Lokale Filterung mit Array.filter() - kein Service-Aufruf nötig
+  
       this.filteredBeers = this.allBeers.filter(beer =>
         beer.country.toLowerCase() === country.toLowerCase()
       );
@@ -97,9 +94,9 @@ export class OverviewComponent {
     }
   }
 
-  // Filter-Reset-Methode - sehr einfach
+  // Filter-Reset-Methode
   resetFilters(): void {
-    // Alle gefilterten Biere zurück auf den ursprünglichen Zustand setzen
+    // Alle gefilterten Biere werden zurück auf den ursprünglichen Zustand setzen
     this.filteredBeers = [...this.allBeers];
     console.log('Alle Filter zurückgesetzt:', this.filteredBeers.length, 'Biere');
   }

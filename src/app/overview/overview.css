@@ -1,127 +1,621 @@
+/* ===== ULTRA-MODERNE OVERVIEW SEITE ===== */
+/* Performance-optimierte, spektakuläre Filter- und Übersichtsseite */
+
+/* ===== HERO HEADER SEKTION ===== */
 h1 {
-  color: #FF6B35;
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: 2.5rem;
-  font-weight: 600;
+  font-size: 3.5rem !important;
+  font-weight: 900 !important;
+  text-align: center !important;
+  margin: 2rem 0 3rem 0 !important;
+  
+  /* Spektakulärer animierter Gradient-Text */
+  background: linear-gradient(135deg, 
+    var(--accent-color) 0%,
+    var(--primary-color) 25%,
+    #FFD700 50%,
+    var(--primary-color) 75%,
+    var(--accent-color) 100%) !important;
+  background-size: 300% 300% !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  animation: heroTextShimmer 6s ease-in-out infinite !important;
+  
+  /* Moderne Text-Schatten für Tiefe */
+  position: relative;
+  display: inline-block;
+  transform: translateZ(0);
 }
 
-h2 {
-  color: #333;
-  margin: 2rem 0 1.5rem 0;
-  font-size: 1.8rem;
-  font-weight: 600;
+/* Hero-Text Animation */
+@keyframes heroTextShimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
-/* Filter Section */
+/* Glow-Effekt hinter dem Header */
+h1::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, 
+    rgba(212, 175, 55, 0.3) 0%,
+    rgba(255, 215, 0, 0.2) 30%,
+    transparent 70%);
+  transform: translate(-50%, -50%);
+  animation: heroGlow 4s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes heroGlow {
+  0%, 100% { 
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.9;
+  }
+}
+
+/* ===== MODERNE FILTER-SEKTION ===== */
 .filter-section {
   margin-bottom: 3rem;
+  position: relative;
 }
 
+/* Revolutionäre Mat-Card Transformation */
+.filter-section mat-card {
+  background: linear-gradient(145deg, 
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0.85) 50%,
+    rgba(212, 175, 55, 0.08) 100%) !important;
+  backdrop-filter: blur(25px) saturate(1.3) !important;
+  border: 2px solid rgba(255, 255, 255, 0.4) !important;
+  border-radius: 28px !important;
+  
+  /* Cinematic Schatten-System */
+  box-shadow: 
+    0 25px 60px rgba(0, 0, 0, 0.15),
+    0 12px 25px rgba(0, 0, 0, 0.1),
+    0 6px 12px rgba(212, 175, 55, 0.2),
+    inset 0 2px 0 rgba(255, 255, 255, 0.8) !important;
+  
+  /* Smooth Animationen */
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1) !important;
+  position: relative;
+  overflow: hidden;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Holographischer Border-Effekt */
+.filter-section mat-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 30px;
+  background: linear-gradient(45deg, 
+    rgba(212, 175, 55, 0.6) 0%,
+    rgba(255, 215, 0, 0.7) 25%,
+    rgba(212, 175, 55, 0.6) 50%,
+    rgba(139, 69, 19, 0.5) 75%,
+    rgba(212, 175, 55, 0.6) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+  animation: filterBorderShift 8s linear infinite;
+}
+
+@keyframes filterBorderShift {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.filter-section mat-card:hover::before {
+  opacity: 0.6;
+}
+
+/* Moderna Card-Header */
+.filter-section mat-card-header {
+  background: linear-gradient(135deg, 
+    rgba(212, 175, 55, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 100%) !important;
+  border-radius: 24px 24px 0 0 !important;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
+  padding: 2rem 2rem 1.5rem 2rem !important;
+  position: relative;
+}
+
+.filter-section mat-card-title {
+  font-size: 1.8rem !important;
+  font-weight: 800 !important;
+  color: var(--accent-color) !important;
+  text-align: center !important;
+  margin: 0 !important;
+  letter-spacing: 0.5px;
+  
+  /* Subtiler Gradient-Text */
+  background: linear-gradient(135deg, 
+    var(--accent-color) 0%,
+    var(--primary-color) 100%) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.filter-section mat-card-content {
+  padding: 2.5rem !important;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* ===== MODERNE FILTER-ROWS ===== */
 .filter-row {
   display: flex;
-  gap: 1rem;
   align-items: end;
-  margin-bottom: 1rem;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  position: relative;
 }
 
+/* Revolutionäre Mat-Form-Field Transformation */
 .filter-row mat-form-field {
   flex: 1;
-  max-width: 300px;
+  position: relative;
 }
 
-.filter-row button {
-  height: 56px;
+/* Ultra-moderne Input-Felder */
+.filter-row mat-form-field .mat-mdc-form-field {
+  background: linear-gradient(145deg, 
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(248, 246, 240, 0.7) 100%) !important;
+  backdrop-filter: blur(12px) !important;
+  border-radius: 16px !important;
+  border: 2px solid rgba(212, 175, 55, 0.2) !important;
+  box-shadow: 
+    0 6px 16px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1) !important;
+  overflow: hidden;
+}
+
+/* Fokus-Effekte für Input-Felder */
+.filter-row mat-form-field .mat-mdc-form-field:focus-within {
+  border-color: var(--primary-color) !important;
+  box-shadow: 
+    0 8px 20px rgba(212, 175, 55, 0.3),
+    0 0 0 4px rgba(212, 175, 55, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 1) !important;
+  transform: translateY(-2px);
+}
+
+/* Moderne Label-Styles */
+.filter-row mat-form-field .mat-mdc-floating-label {
+  color: var(--text-secondary) !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+}
+
+.filter-row mat-form-field .mat-mdc-floating-label.mdc-floating-label--float-above {
+  color: var(--primary-color) !important;
+  font-weight: 700 !important;
+}
+
+/* Input-Text Styling */
+.filter-row mat-form-field input,
+.filter-row mat-form-field .mat-mdc-select-value {
+  color: var(--text-primary) !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+}
+
+/* Suffix-Icon Styling */
+.filter-row mat-form-field mat-icon[matSuffix] {
+  color: var(--primary-color) !important;
+  font-size: 1.3rem !important;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.filter-row mat-form-field:focus-within mat-icon[matSuffix] {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* ===== SPEKTAKULÄRE FILTER-BUTTONS ===== */
+.filter-row button[mat-raised-button] {
+  padding: 0 2rem !important;
+  height: 56px !important;
+  border-radius: 16px !important;
+  font-weight: 800 !important;
+  font-size: 0.9rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  position: relative;
+  overflow: hidden;
   min-width: 120px;
+  
+  /* Luxuriöser Button-Gradient */
+  background: linear-gradient(135deg, 
+    var(--primary-color) 0%,
+    var(--primary-dark) 50%,
+    var(--accent-color) 100%) !important;
+  color: white !important;
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 
+    0 8px 20px rgba(212, 175, 55, 0.4),
+    0 4px 8px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+  
+  /* Performance-optimierte Animation */
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1) !important;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
+/* Button-Glanz-Effekt */
+.filter-row button[mat-raised-button]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.4) 50%, 
+    transparent 100%);
+  transition: left 0.5s ease;
+  z-index: 1;
+}
+
+/* Button-Hover-Effekte */
+.filter-row button[mat-raised-button]:hover {
+  transform: translateY(-3px) scale(1.02) !important;
+  box-shadow: 
+    0 12px 30px rgba(212, 175, 55, 0.5),
+    0 6px 12px rgba(0, 0, 0, 0.15),
+    inset 0 2px 0 rgba(255, 255, 255, 0.6) !important;
+}
+
+.filter-row button[mat-raised-button]:hover::before {
+  left: 100%;
+}
+
+/* ===== RESET-SEKTION ===== */
 .reset-section {
-  text-align: center;
-  margin-top: 1.5rem;
-  padding-top: 1rem;
-  border-top: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
 }
 
-/* Results Section */
+.reset-section button[mat-stroked-button] {
+  padding: 0.8rem 2rem !important;
+  border-radius: 12px !important;
+  font-weight: 700 !important;
+  font-size: 0.9rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  
+  /* Moderner Outline-Style */
+  background: rgba(255, 255, 255, 0.7) !important;
+  color: var(--text-primary) !important;
+  border: 2px solid var(--primary-color) !important;
+  backdrop-filter: blur(8px) !important;
+  
+  /* Smooth Transition */
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1) !important;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.reset-section button[mat-stroked-button]:hover {
+  background: var(--primary-color) !important;
+  color: white !important;
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 6px 16px rgba(212, 175, 55, 0.4) !important;
+}
+
+/* ===== RESULTS-SEKTION ===== */
 .results-section {
-  margin-bottom: 2rem;
+  position: relative;
+  margin-top: 3rem;
 }
 
-/* Beer Grid */
+.results-section h2 {
+  font-size: 2.2rem !important;
+  font-weight: 800 !important;
+  color: var(--accent-color) !important;
+  margin-bottom: 2rem !important;
+  text-align: center;
+  position: relative;
+  
+  /* Counter-Badge für Anzahl */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Moderne Ergebnis-Counter */
+.results-section h2::after {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  animation: resultsPulse 2s ease-in-out infinite;
+}
+
+@keyframes resultsPulse {
+  0%, 100% { 
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% { 
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+}
+
+/* ===== PERFORMANCE-OPTIMIERTES BEER-GRID ===== */
 .beer-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  gap: 16px;
-  margin-top: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+  position: relative;
+  
+  /* GPU-Beschleunigung für das Grid */
+  transform: translateZ(0);
+  will-change: contents;
 }
 
-/* No Results */
+/* ===== MODERNE NO-RESULTS SEKTION ===== */
 .no-results {
-  grid-column: 1 / -1;
-  text-align: center;
-  padding: 3rem 2rem;
-  background: #f5f5f5;
-  border-radius: 12px;
+  grid-column: 1 / -1; /* Über alle Grid-Spalten */
+  background: linear-gradient(145deg, 
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(248, 246, 240, 0.8) 100%) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 2px solid rgba(212, 175, 55, 0.2) !important;
+  border-radius: 24px !important;
+  box-shadow: 
+    0 16px 40px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+  margin: 2rem 0;
+  transition: all 0.4s ease;
+}
+
+.no-results:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.15),
+    inset 0 2px 0 rgba(255, 255, 255, 1) !important;
 }
 
 .no-results-content {
+  text-align: center;
+  padding: 3rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .no-results-content mat-icon {
-  font-size: 3rem;
-  width: 3rem;
-  height: 3rem;
-  color: #ccc;
+  font-size: 4rem !important;
+  width: 4rem !important;
+  height: 4rem !important;
+  color: var(--primary-color) !important;
+  opacity: 0.7;
+  animation: noResultsFloat 3s ease-in-out infinite;
+}
+
+@keyframes noResultsFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
 .no-results-content h3 {
-  color: #666;
-  margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.8rem !important;
+  font-weight: 700 !important;
+  color: var(--text-primary) !important;
+  margin: 0 !important;
 }
 
 .no-results-content p {
-  color: #999;
-  margin: 0;
-  font-size: 1rem;
+  font-size: 1.1rem !important;
+  color: var(--text-secondary) !important;
+  margin: 0 !important;
+  opacity: 0.8;
 }
 
-/* Responsive Design */
+/* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 768px) {
   h1 {
-    font-size: 2rem;
+    font-size: 2.5rem !important;
+    margin: 1.5rem 0 2rem 0 !important;
+  }
+  
+  .filter-section mat-card-content {
+    padding: 1.5rem !important;
   }
   
   .filter-row {
     flex-direction: column;
     align-items: stretch;
+    gap: 1rem;
   }
   
-  .filter-row mat-form-field {
-    max-width: none;
-  }
-  
-  .filter-row button {
-    height: 48px;
-    width: 100%;
+  .filter-row button[mat-raised-button] {
+    height: 48px !important;
+    min-width: auto;
   }
   
   .beer-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .results-section h2 {
+    font-size: 1.8rem !important;
   }
 }
 
 @media (max-width: 480px) {
-  .filter-section mat-card {
-    margin: 0 -8px;
+  h1 {
+    font-size: 2rem !important;
+  }
+  
+  .filter-section mat-card-header {
+    padding: 1.5rem 1rem 1rem 1rem !important;
+  }
+  
+  .filter-section mat-card-title {
+    font-size: 1.4rem !important;
+  }
+  
+  .filter-section mat-card-content {
+    padding: 1rem !important;
   }
   
   .filter-row {
-    gap: 0.5rem;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
   }
+  
+  .beer-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .no-results-content {
+    padding: 2rem 1rem;
+  }
+  
+  .no-results-content mat-icon {
+    font-size: 3rem !important;
+    width: 3rem !important;
+    height: 3rem !important;
+  }
+}
+
+/* ===== DARK MODE SUPPORT ===== */
+@media (prefers-color-scheme: dark) {
+  .filter-section mat-card {
+    background: linear-gradient(145deg, 
+      rgba(30, 30, 30, 0.95) 0%,
+      rgba(40, 40, 40, 0.9) 50%,
+      rgba(212, 175, 55, 0.1) 100%) !important;
+    border-color: rgba(212, 175, 55, 0.3) !important;
+  }
+  
+  .filter-section mat-card-title {
+    background: linear-gradient(135deg, 
+      #f0f0f0 0%,
+      var(--primary-color) 100%) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+  }
+  
+  .filter-row mat-form-field .mat-mdc-form-field {
+    background: linear-gradient(145deg, 
+      rgba(50, 50, 50, 0.9) 0%,
+      rgba(40, 40, 40, 0.8) 100%) !important;
+    border-color: rgba(212, 175, 55, 0.3) !important;
+  }
+  
+  .filter-row mat-form-field input,
+  .filter-row mat-form-field .mat-mdc-select-value {
+    color: #f0f0f0 !important;
+  }
+  
+  .filter-row mat-form-field .mat-mdc-floating-label {
+    color: #ccc !important;
+  }
+  
+  .no-results {
+    background: linear-gradient(145deg, 
+      rgba(40, 40, 40, 0.9) 0%,
+      rgba(50, 50, 50, 0.8) 100%) !important;
+    border-color: rgba(212, 175, 55, 0.3) !important;
+  }
+  
+  .no-results-content h3 {
+    color: #f0f0f0 !important;
+  }
+  
+  .no-results-content p {
+    color: #ccc !important;
+  }
+}
+
+/* ===== PERFORMANCE-OPTIMIERUNG ===== */
+@media (prefers-reduced-motion: reduce) {
+  h1,
+  .filter-section mat-card::before,
+  .no-results-content mat-icon,
+  .results-section h2::after {
+    animation: none !important;
+  }
+  
+  .filter-row mat-form-field .mat-mdc-form-field:focus-within,
+  .filter-row button[mat-raised-button]:hover,
+  .reset-section button[mat-stroked-button]:hover {
+    transform: none !important;
+  }
+}
+
+/* Accessibility Focus-States */
+.filter-row button:focus-visible,
+.reset-section button:focus-visible {
+  outline: 3px solid var(--primary-color) !important;
+  outline-offset: 4px !important;
+}
+
+/* Touch-Optimierung */
+@media (hover: none) and (pointer: coarse) {
+  .filter-row button[mat-raised-button]:hover,
+  .reset-section button[mat-stroked-button]:hover {
+    transform: scale(1.01) !important;
+  }
+  
+  .no-results:hover {
+    transform: none;
+  }
+}
+
+/* ===== CONTAINER-OPTIMIERUNG ===== */
+.filter-section,
+.results-section {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem;
+}
+
+/* ===== SCROLL-OPTIMIERUNG ===== */
+.beer-grid {
+  scroll-margin-top: 2rem; /* Für sanftes Scrollen */
+}
+
+/* Performance-Hints für Browser */
+.filter-section mat-card,
+.filter-row mat-form-field,
+.filter-row button,
+.no-results {
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }

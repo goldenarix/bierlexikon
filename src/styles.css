@@ -1,9 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-
 /* ===== RESET UND BASIS-STYLES ===== */
 /* Diese Regeln sorgen für konsistente Darstellung in allen Browsern */
 * {
@@ -18,7 +12,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   --primary-color: #d4af37;        /* Goldenes Bier-Gelb */
   --primary-dark: #b8941f;         /* Dunkleres Gold für Hover-Effekte */
   --accent-color: #8b4513;         /* Warmes Braun für Akzente */
-  --background-light: #fefefe93;     /* Sehr helles Weiß */
+  --background-light: #fefefe;     /* Sehr helles Weiß */
   --background-dark: #f8f6f0;      /* Cremiges Off-White */
   
   /* Graustufen für Text und Schatten */
@@ -55,8 +49,26 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6; /* Gute Lesbarkeit durch Zeilenhöhe */
   color: var(--text-primary);
-  background-color: var(--background-light);
   min-height: 100vh; /* Mindestens Vollbild-Höhe */
+  
+  /* Moderner Gradient-Hintergrund */
+  background: linear-gradient(135deg, 
+    #fdfcfb 0%,     /* Sehr helles Cream */
+    #e2d1c3 25%,    /* Warmes Beige */
+    #f8f6f0 50%,    /* Cremiges Off-White */
+    #e8ddd4 75%,    /* Sanftes Braun */
+    #faf9f7 100%    /* Perlweiß */
+  );
+  
+  /* Füge ein subtiles Muster hinzu */
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(139, 69, 19, 0.02) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(212, 175, 55, 0.02) 0%, transparent 50%);
+  
+  /* Stelle sicher, dass der Hintergrund fixiert bleibt */
+  background-attachment: fixed;
+  background-size: 100% 100%;
 }
 
 /* ===== TYPOGRAFIE ===== */
@@ -134,24 +146,95 @@ p {
 }
 
 /* ===== SECTION-STYLES ===== */
-/* Einheitliche Section-Gestaltung */
+/* Einheitliche Section-Gestaltung mit modernen Hintergründen */
 .section {
   padding: var(--spacing-xxl) 0;
+  position: relative; /* Ermöglicht Pseudo-Elemente für Effekte */
 }
 
 .section-hero {
-  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  background: linear-gradient(135deg, 
+    var(--primary-color) 0%,
+    #f4d03f 25%,
+    var(--primary-dark) 50%,
+    #d35400 75%,
+    var(--accent-color) 100%
+  );
   color: white;
   text-align: center;
   padding: var(--spacing-xxl) 0;
+  position: relative;
+  overflow: hidden; /* Versteckt überlaufende Pseudo-Elemente */
+}
+
+/* Animierte Bläschen-Effekte für Hero-Section */
+.section-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 20%),
+    radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.06) 0%, transparent 20%);
+  animation: bubbleFloat 20s ease-in-out infinite;
+}
+
+@keyframes bubbleFloat {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg); 
+    opacity: 1;
+  }
+  50% { 
+    transform: translateY(-20px) rotate(180deg); 
+    opacity: 0.8;
+  }
 }
 
 .section-content {
-  background-color: var(--background-light);
+  background: rgba(255, 255, 255, 0.7); /* Semi-transparenter weißer Overlay */
+  backdrop-filter: blur(10px); /* Glasmorphismus-Effekt */
+  position: relative;
+}
+
+/* Glasmorphismus-Effekt für Content-Sectionen */
+.section-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(145deg, 
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+  pointer-events: none; /* Lässt Klicks durch */
 }
 
 .section-alternate {
-  background-color: var(--background-dark);
+  background: rgba(248, 246, 240, 0.8); /* Semi-transparenter Overlay */
+  backdrop-filter: blur(8px);
+  position: relative;
+}
+
+/* Subtiler Verlauf für alternate Sections */
+.section-alternate::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, 
+    rgba(212, 175, 55, 0.03) 0%,
+    transparent 50%,
+    rgba(139, 69, 19, 0.03) 100%
+  );
+  pointer-events: none;
 }
 
 /* ===== BUTTON-STYLES ===== */
@@ -193,33 +276,78 @@ p {
 }
 
 /* ===== CARD-KOMPONENTEN ===== */
-/* Basis-Card-Style für Bier-Cards und andere Karten */
+/* Moderne Card-Designs mit Glasmorphismus und erweiterten Effekten */
 .card {
-  background: white;
+  background: rgba(255, 255, 255, 0.9); /* Semi-transparenter Hintergrund */
+  backdrop-filter: blur(15px); /* Glasmorphismus-Unschärfe */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Subtiler Rahmen */
   border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow-light);
-  overflow: hidden; /* Verhindert Überlauf bei Bildern */
-  transition: all 0.3s ease;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    0 2px 8px rgba(0, 0, 0, 0.08); /* Mehrschichtige Schatten */
+  overflow: hidden;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Smooth bounce-Effekt */
 }
 
+/* Erweiterte Hover-Effekte für Cards */
 .card:hover {
-  box-shadow: var(--shadow-heavy);
-  transform: translateY(-4px); /* Deutlicher Hover-Effekt für Cards */
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.15),
+    0 8px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px) scale(1.02); /* Kombinierter Hover-Effekt */
+  border: 1px solid rgba(212, 175, 55, 0.3); /* Goldener Hover-Rahmen */
+}
+
+/* Subtiler Schimmer-Effekt bei Hover */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(212, 175, 55, 0.1), 
+    transparent
+  );
+  transition: left 0.5s ease;
+  z-index: 1;
+}
+
+.card:hover::before {
+  left: 100%; /* Schimmer-Effekt beim Hover */
 }
 
 .card-header {
   padding: var(--spacing-lg);
-  border-bottom: 1px solid var(--background-dark);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(212, 175, 55, 0.05) 100%
+  );
+  position: relative;
+  z-index: 2; /* Über dem Schimmer-Effekt */
 }
 
 .card-content {
   padding: var(--spacing-lg);
+  position: relative;
+  z-index: 2;
 }
 
 .card-footer {
   padding: var(--spacing-md) var(--spacing-lg);
-  background-color: var(--background-dark);
-  border-top: 1px solid var(--background-dark);
+  background: linear-gradient(135deg, 
+    rgba(248, 246, 240, 0.7) 0%,
+    rgba(212, 175, 55, 0.1) 100%
+  );
+  border-top: 1px solid rgba(212, 175, 55, 0.1);
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 2;
 }
 
 /* ===== FORM-ELEMENTE ===== */

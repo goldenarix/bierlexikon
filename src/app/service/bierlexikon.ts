@@ -104,8 +104,9 @@ export class BierlexikonService {
       rating: 4.0,
       country: 'Deutschland',
       image: 'loewenbraeu.jpg'
-    }
-  ];
+    }, 
+    
+    ];
 
   constructor() { }
 
@@ -148,5 +149,10 @@ export class BierlexikonService {
     return this.beers
       .sort((a, b) => b.rating - a.rating)
       .slice(0, 3);
+  }
+
+  addBear(newBeer: Beer){
+      newBeer.id = this.beers.length + 1; //  ID-Vergabe einfach +1
+    	this.beers.push(newBeer);
   }
 }

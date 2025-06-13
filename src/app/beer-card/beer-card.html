@@ -17,34 +17,16 @@
         {{ beer.type }}
       </span>
       
-      <!-- Stats -->
-      <div class="beer-stats">
-        <span class="alcohol">{{ beer.alcohol }}% Alk.</span>
-        <span class="ibu">{{ beer.ibu }} IBU</span>
-      </div>
-      
-      <!-- Rating -->
-      <div class="rating">
-        @for(star of getStarArray(); track $index) {
-          <mat-icon [ngClass]="star ? 'star-filled' : 'star-empty'">
-            {{ star ? 'star' : 'star_border' }}
-          </mat-icon>
-        }
-        <span class="rating-text">({{ beer.rating }}/5)</span>
-      </div>
-      
-      <!-- Description -->
-      <p class="beer-description">{{ beer.description }}</p>
-      
       <!-- Actions -->
       <div class="beer-actions">
         <button mat-button class="info-btn">
           <a [routerLink]="['/detail-beer', beer.id]">More Info</a>
         </button>
-        <!-- <button mat-button class="favorite-btn" (click)="addToFavorites(beer)">
-          <mat-icon>favorite_border</mat-icon>
-          Favorit
-        </button> -->
+      </div>
+      <div>
+        <span>
+          
+        </span>
       </div>
     </div>
   </div>

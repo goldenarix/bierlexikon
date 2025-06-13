@@ -1,0 +1,32 @@
+<p>add-your-beer works!</p>
+
+
+<h2>Hier kannst du dein eigenes Bier hinzufügen</h2>
+
+
+<section>
+  <form [formGroup]="beerForm">
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput id="name" formControlName="BeerName">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Alkoholanteil</mat-label>
+        <input matInput id="alcohol" formControlName="alcohol">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Herkunftsland</mat-label>
+        <input matInput id="Land" formControlName="Land">
+    </mat-form-field>
+
+     <mat-form-field>
+        <mat-label>Brauerei</mat-label>
+        <input matInput id="brewery" formControlName="brewery">
+    </mat-form-field>
+
+
+    <button mat-fab class="fab-bottom-right" (click)="saveBeer()">
+  Bier anlegen
+</button>

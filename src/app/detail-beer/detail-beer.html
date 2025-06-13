@@ -1,1 +1,131 @@
+<!-- 
+<p>Du hast {{selectedBeer?.name}} angeglickt mit {{selectedBeer?.alcohol}} Alkohol</p>
+
+<h1> Mehr Infos zu {{selectedBeer?.name}} </h1> -->
+
+
+
+<div class="beer-detail-container" *ngIf="selectedBeer">
+  
+  <!-- Hero Section mit Bier-Bild und Grundinfos -->
+  <section class="beer-hero">
+    <div class="hero-background">
+      <div class="hero-content">
+        <!-- Bier-Bild mit modernen Effekten -->
+        <div class="beer-image-container">
+          <div class="image-glow"></div>
+          <img 
+            [src]="selectedBeer?.image" 
+            [alt]="selectedBeer?.name"
+            class="beer-image"
+            loading="lazy">
+          <div class="image-overlay">
+            <div class="rating-badge">
+              <span class="rating-stars">★★★★★</span>
+              <span class="rating-number">{{ selectedBeer?.rating }}/5</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Haupt-Informationen -->
+        <div class="beer-main-info">
+          <div class="beer-header">
+            <h1 class="beer-name">{{ selectedBeer?.name }}</h1>
+            <div class="beer-type-badge">{{ selectedBeer?.type }}</div>
+          </div>
+          
+          <div class="brewery-info">
+            <h2 class="brewery-name">{{ selectedBeer?.brewery }}</h2>
+            <div class="country-flag">
+              <span class="flag-icon">🏴</span>
+              <span class="country-name">{{ selectedBeer?.country }}</span>
+            </div>
+          </div>
+
+
+          <!-- Preis-Information -->
+          <div class="price-section" *ngIf="selectedBeer.price">
+            <div class="price-tag">
+              <span class="currency">€</span>
+              <span class="price-amount">{{ selectedBeer?.price }}</span>
+              <span class="price-unit">pro Flasche</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detaillierte Informationen in Cards -->
+  <section class="beer-details">
+    <div class="container">
+      
+      <!-- Alkohol und IBU Karten -->
+      <div class="stats-grid">
+        <div class="stat-card alcohol-card">
+          <div class="stat-icon">🍺</div>
+          <div class="stat-content">
+            <h3 class="stat-title">Alkoholgehalt</h3>
+            <div class="stat-value">{{ selectedBeer?.alcohol }}%</div>
+            <div class="stat-bar">
+            <div class="stat-fill" [style.width.%]="(selectedBeer?.alcohol ?? 0) * 10"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stat-card ibu-card">
+          <div class="stat-icon">🌿</div>
+          <div class="stat-content">
+            <h3 class="stat-title">Bitterkeit (IBU)</h3>
+            <div class="stat-value">{{ selectedBeer?.ibu }}</div>
+            <div class="stat-bar">
+            <div class="stat-fill" [style.width.%]="selectedBeer.ibu / 100 * 100"></div>
+        </div>
+          </div>
+        </div>
+
+        <!-- Braudatum falls verfügbar -->
+        <div class="stat-card date-card" *ngIf="selectedBeer.brewingDate">
+          <div class="stat-icon">📅</div>
+          <div class="stat-content">
+            <h3 class="stat-title">Gebraut am</h3>
+            <div class="stat-value">{{ selectedBeer?.brewingDate | date:'dd.MM.yyyy' }}</div>
+            <div class="stat-subtitle">Frische garantiert</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Beschreibung in einer großen Card -->
+      <div class="description-card">
+        <h3 class="description-title">Über dieses Bier</h3>
+        <p class="description-text">{{ selectedBeer.description }}</p>
+        
+        <!-- Tags falls verfügbar -->
+        <div class="tags-section" *ngIf="selectedBeer.tags && selectedBeer.tags.length > 0">
+          <h4 class="tags-title">Geschmacksprofil</h4>
+          <div class="tags-container">
+            <span class="tag" *ngFor="let tag of selectedBeer.tags">
+              {{ tag }}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Zurück-Button -->
+      <div class="navigation-section">
+        <button class="back-btn" [routerLink]="'/home'">
+          <span class="back-icon">←</span>
+          <span class="back-text">Zurück zur Übersicht</span>
+        </button>
+      </div>
+
+  <div class="empty-state">
+    <div class="empty-icon">🍺</div>
+    <h2 class="empty-title">Kein Bier ausgewählt</h2>
+    <p class="empty-description">Wähle ein Bier aus der Übersicht, um Details zu sehen.</p>
+    <button class="empty-action" routerLink="/overview">
+      Zur Bier-Übersicht
+    </button>
+  </div>
+</div>
 
