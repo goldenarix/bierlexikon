@@ -1,1 +1,51 @@
 <p>beer-card works!</p>
+<mat-card [ngStyle]="{'margin-bottom': '16px'}" class="beer-card">
+  <mat-card-header class="beer-header">
+    <div mat-card-avatar>
+      <img mat-card-avatar [src]="beer.image" [alt]="beer.name">
+    </div>
+    <mat-card-title>
+      {{ beer.name }}
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{ beer.brewery }} • {{ beer.country }}
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="beer-details">
+      <div class="beer-info">
+        <span class="beer-type">{{ beer.type }}</span>
+        <div class="beer-stats">
+          <span class="alcohol">{{ beer.alcohol }}% Alk.</span>
+          <span class="ibu">{{ beer.ibu }} IBU</span>
+        </div>
+      </div>
+      
+      <div class="rating">
+        @for(star of getStarArray(); track $index) {
+          <mat-icon [ngStyle]="{'color': star ? '#FFD700' : '#E0E0E0'}">
+            {{ star ? 'star' : 'star_border' }}
+          </mat-icon>
+        }
+        <span class="rating-text">({{ beer.rating }}/5)</span>
+      </div>
+    </div>
+    
+    <p class="beer-description">{{ beer.description }}</p>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-button color="primary" (click)="getBeerInfo(beer)">
+      <a [routerLink]="['/detail-component', beer.id]">More Info</a>
+    </button>
+    <button mat-button (click)="addToFavorites(beer)">
+      <mat-icon>favorite_border</mat-icon>
+      Favorit
+    </button>
+    <button mat-button (click)="shareBeer(beer)">
+      <mat-icon>share</mat-icon>
+      Teilen
+    </button>
+  </mat-card-actions>
+</mat-card>

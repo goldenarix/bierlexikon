@@ -13,6 +13,6 @@ export class Biermarken {
   selectedBeer: Beer | undefined;
 
   constructor(){
-    this.selectedBeer = 
+    
   }
 }

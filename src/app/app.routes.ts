@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { Biermarken } from './biermarken/biermarken';
-import { Home } from './home/home';
+import { HomeComponent } from './home/home';
 
 export const routes: Routes = [
     {
@@ -10,7 +10,7 @@ export const routes: Routes = [
     },
     {
         path: 'home',
-        component: Home
+        component: HomeComponent
     },
     {
         path: 'biermarken',
