@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Beer } from '../beer';
+import { BierlexikonService } from '../service/bierlexikon';
 
 @Component({
   selector: 'app-biermarken',
@@ -7,5 +9,10 @@ import { Component } from '@angular/core';
   styleUrl: './biermarken.css'
 })
 export class Biermarken {
+  Biere: BierlexikonService = inject(BierlexikonService);
+  selectedBeer: Beer | undefined;
 
+  constructor(){
+    this.selectedBeer = 
+  }
 }
