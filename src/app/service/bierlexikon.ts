@@ -43,7 +43,7 @@ export class BierlexikonService {
       description: 'Ein cremiges irisches Stout mit röstigen Malzaromen und charakteristischem Schaum.',
       rating: 4.1,
       country: 'Irland',
-      image: 'assets/guinness.jpg'
+      image: 'guinness.jpg'
     },
     {
       id: 4,
@@ -55,7 +55,7 @@ export class BierlexikonService {
       description: 'Das Original-Pilsner aus Tschechien mit hopfiger Bitterkeit und goldener Farbe.',
       rating: 4.2,
       country: 'Tschechien',
-      image: 'assets/pilsner-urquell.jpg'
+      image: 'pilsenerurquell.jpg'
     },
     {
       id: 5,
@@ -67,7 +67,7 @@ export class BierlexikonService {
       description: 'Ein intensives amerikanisches IPA mit ausgeprägten Zitrus- und Kiefernaromen.',
       rating: 4.0,
       country: 'USA',
-      image: 'assets/stone-ipa.jpg'
+      image: 'stone-ipa.jpg'
     },
     {
       id: 6,
@@ -79,7 +79,7 @@ export class BierlexikonService {
       description: 'Ein erfrischendes bayerisches Weißbier mit natürlicher Trübung.',
       rating: 4.1,
       country: 'Deutschland',
-      image: 'assets/erdinger.jpg'
+      image: 'erdinger.jpg'
     },
     {
       id: 7,
@@ -91,7 +91,7 @@ export class BierlexikonService {
       description: 'Ein belgisches Premium-Lager mit elegantem Geschmack.',
       rating: 3.8,
       country: 'Belgien',
-      image: 'assets/stella-artois.jpg'
+      image: 'stella-artois.jpg'
     },
     {
       id: 8,
@@ -103,47 +103,50 @@ export class BierlexikonService {
       description: 'Ein Münchener Original mit vollmundigem Geschmack.',
       rating: 4.0,
       country: 'Deutschland',
-      image: 'assets/loewenbraeu.jpg'
+      image: 'loewenbraeu.jpg'
     }
   ];
 
   constructor() { }
 
-  getAllBeers(): Observable<Beer[]> {
-    return of([...this.beers]).pipe(delay(500));
+  
+  getAllBeers(): Beer[] {
+    return this.beers;
   }
 
-  getBeerById(id: number): Observable<Beer | undefined> {
-    const beer = this.beers.find(b => b.id === id);
-    return of(beer).pipe(delay(300));
+  //einzelnes Bier oder undefined
+  getBeerById(id: number): Beer | undefined {
+    // Array.find() erste gefundene Element 
+    return this.beers.find(b => b.id === id);
   }
 
-  getBeersByType(type: string): Observable<Beer[]> {
+  // nach Biertyp filtern 
+  getBeersByType(type: string): Beer[] {
     if (!type) {
       return this.getAllBeers();
     }
-    const filteredBeers = this.beers.filter(beer => 
+    // ein neues Array ersztellen aber mit allen passenden bzw  gefilterten  Elementen
+    return this.beers.filter(beer => 
       beer.type.toLowerCase() === type.toLowerCase()
     );
-    return of(filteredBeers).pipe(delay(400));
   }
 
-  getBeerByName(name: string): Observable<Beer[]> {
+  // Suche nach den biernamen
+  getBeerByName(name: string): Beer[] {
     if (!name) {
-      return of([...this.beers]);
-    } else {
-      const filteredBeers = this.beers.filter(beer =>
-        beer.name.toLowerCase().includes(name.toLowerCase())
-      );
-      return of(filteredBeers).pipe(delay(300));
+      return this.beers;
     }
+    // mit includes() wird geprüft ob der gesuxhte Namestring im Biernamen enthalten ist
+    return this.beers.filter(beer =>
+      beer.name.toLowerCase().includes(name.toLowerCase())
+    );
   }
 
-
-  getFeaturedBeers(): Observable<Beer[]> {
-    const featured = this.beers
+  // Featured Biere 
+  getFeaturedBeers(): Beer[] {
+    // einfach sortieren nach Rating ( das höchste zuerst), dann die ersten 3 nehmen
+    return this.beers
       .sort((a, b) => b.rating - a.rating)
       .slice(0, 3);
-    return of(featured).pipe(delay(300));
   }
 }

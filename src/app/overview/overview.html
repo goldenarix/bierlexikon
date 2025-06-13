@@ -1,0 +1,83 @@
+<h1>🍺 Bier-Übersicht</h1>
+
+<!-- Filter Section -->
+<section class="filter-section">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Biere suchen & filtern</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <!-- Name Filter -->
+      <div class="filter-row">
+        <mat-form-field appearance="outline">
+          <mat-label>Nach Name suchen</mat-label>
+          <input matInput #nameInput placeholder="z.B. Augustiner">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="getBeerByName(nameInput.value)">
+          Suchen
+        </button>
+      </div>
+
+      <!-- Type Filter -->
+      <div class="filter-row">
+        <mat-form-field appearance="outline">
+          <mat-label>Biertyp</mat-label>
+          <mat-select #typeSelect>
+            <mat-option value="">Alle Typen</mat-option>
+            @for (type of beerTypes; track $index) {
+              <mat-option [value]="type">{{ type }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="getBeerByType(typeSelect.value)">
+          Filter
+        </button>
+      </div>
+
+      <!-- Country Filter -->
+      <div class="filter-row">
+        <mat-form-field appearance="outline">
+          <mat-label>Land</mat-label>
+          <mat-select #countrySelect>
+            <mat-option value="">Alle Länder</mat-option>
+            @for (country of countries; track $index) {
+              <mat-option [value]="country">{{ country }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="getBeerByCountry(countrySelect.value)">
+          Filter
+        </button>
+      </div>
+
+      <!-- Reset Button -->
+      <div class="reset-section">
+        <button mat-stroked-button (click)="resetFilters(); nameInput.value=''; typeSelect.value=''; countrySelect.value=''">
+          Alle Filter zurücksetzen
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</section>
+
+<!-- Results Section -->
+<section class="results-section">
+  <h2>Ergebnisse ({{ filteredBeers.length }})</h2>
+  
+  <div class="beer-grid">
+    @for(beer of filteredBeers; track beer.id) {
+      <app-beer-card [beer]="beer"></app-beer-card>
+    } @empty {
+      <mat-card class="no-results">
+        <mat-card-content>
+          <div class="no-results-content">
+            <mat-icon>search_off</mat-icon>
+            <h3>Keine Biere gefunden</h3>
+            <p>Versuche es mit anderen Suchkriterien!</p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    }
+  </div>
+</section>
