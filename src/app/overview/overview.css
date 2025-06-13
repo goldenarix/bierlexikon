@@ -13,53 +13,37 @@ h2 {
   font-weight: 600;
 }
 
-/* Hero Card - Orange Gradient */
-.hero-card {
+/* Filter Section */
+.filter-section {
   margin-bottom: 3rem;
-  background: linear-gradient(135deg, #FFD700 0%, #FF6B35 100%);
-  color: white;
-  border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(255, 107, 53, 0.3);
 }
 
-.hero-card mat-card-header {
-  padding-bottom: 0;
+.filter-row {
+  display: flex;
+  gap: 1rem;
+  align-items: end;
+  margin-bottom: 1rem;
 }
 
-.hero-card mat-card-title {
-  color: white;
-  font-size: 2.2rem;
-  font-weight: 700;
-  margin-bottom: 8px;
+.filter-row mat-form-field {
+  flex: 1;
+  max-width: 300px;
 }
 
-.hero-card mat-card-subtitle {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 1.1rem;
-  font-weight: 400;
+.filter-row button {
+  height: 56px;
+  min-width: 120px;
 }
 
-.hero-card mat-card-content {
-  color: rgba(255, 255, 255, 0.95);
-  font-size: 1.1rem;
-  line-height: 1.6;
+.reset-section {
+  text-align: center;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e0e0e0;
 }
 
-.hero-card mat-card-content p {
-  margin: 16px 0;
-}
-
-.hero-card mat-card-actions {
-  padding-top: 0;
-}
-
-.hero-card button {
-  margin-right: 12px;
-  font-weight: 600;
-}
-
-/* Featured Section */
-.featured-section {
+/* Results Section */
+.results-section {
   margin-bottom: 2rem;
 }
 
@@ -77,6 +61,7 @@ h2 {
   text-align: center;
   padding: 3rem 2rem;
   background: #f5f5f5;
+  border-radius: 12px;
 }
 
 .no-results-content {
@@ -96,11 +81,13 @@ h2 {
 .no-results-content h3 {
   color: #666;
   margin: 0;
+  font-size: 1.5rem;
 }
 
 .no-results-content p {
   color: #999;
   margin: 0;
+  font-size: 1rem;
 }
 
 /* Responsive Design */
@@ -109,22 +96,32 @@ h2 {
     font-size: 2rem;
   }
   
-  .hero-card mat-card-title {
-    font-size: 1.8rem;
+  .filter-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .filter-row mat-form-field {
+    max-width: none;
+  }
+  
+  .filter-row button {
+    height: 48px;
+    width: 100%;
   }
   
   .beer-grid {
     grid-template-columns: 1fr;
     gap: 12px;
   }
-  
-  .hero-card mat-card-actions {
-    flex-direction: column;
-    gap: 8px;
+}
+
+@media (max-width: 480px) {
+  .filter-section mat-card {
+    margin: 0 -8px;
   }
   
-  .hero-card button {
-    margin: 0;
-    width: 100%;
+  .filter-row {
+    gap: 0.5rem;
   }
 }

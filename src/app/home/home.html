@@ -1,112 +1,38 @@
 <h1>🍺 Bierlexikon - Entdecke die Welt des Biers</h1>
 
-<!-- Welcome Section -->
-<mat-card class="welcome-card">
-
+<!-- Hero Section -->
+<mat-card class="hero-card">
   <mat-card-header>
     <mat-card-title>Willkommen im Bierlexikon</mat-card-title>
-    <mat-card-subtitle>Deine ultimative Quelle für Bier-Wissen</mat-card-subtitle>
+    <mat-card-subtitle>Deine Quelle für Bier-Wissen</mat-card-subtitle>
   </mat-card-header>
-
   <mat-card-content>
     <p>Entdecke viele Biersorten aus aller Welt, lerne über Brauereien und werde zum Bier-Experten!</p>
   </mat-card-content>
-
   <mat-card-actions>
-    <button mat-raised-button  >Biere entdecken</button>
-    <button mat-button>Zur Übersicht</button>
-  </mat-card-actions>
+    <button mat-raised-button color="primary" [routerLink]="['/overview']">Biere entdecken</button>
 
+  </mat-card-actions>
 </mat-card>
 
 
 
-
-<section class="filter-section">
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>Biere filtern</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="filter-controls">
-        <mat-form-field appearance="outline">
-          <mat-label>Nach Bier-Name suchen</mat-label>
-          <input matInput #beerNameInput placeholder="z.B. Augustiner">
-          <mat-icon matSuffix>search</mat-icon>
-        </mat-form-field>
-        
-        <mat-form-field appearance="outline">
-          <mat-label>Biertyp</mat-label>
-          <mat-select #beerTypeSelect>
-            <mat-option >Alle Typen</mat-option>
-            <mat-option>Lager</mat-option>
-            <mat-option >Weizen</mat-option>
-            <mat-option>Pils</mat-option>
-            <mat-option >Stout</mat-option>
-            <mat-option>IPA</mat-option>
-            <mat-option>Keller Bier</mat-option>
-          </mat-select>
-        </mat-form-field>
-        
-        <mat-form-field appearance="outline">
-          <mat-label>Land</mat-label>
-          <input matInput #countryInput placeholder="z.B. Deutschland">
-          <mat-icon matSuffix>flag</mat-icon>
-        </mat-form-field>
-      </div>
-      
-      <div class="filter-buttons">
-        <button mat-raised-button color="primary">
-          Filter anwenden
-        </button>
-        <button mat-button>
-          Filter zurücksetzen
-        </button>
-      </div>
-    </mat-card-content>
-  </mat-card>
-</section>
-
-
-
-
-
-
 <!-- Featured Beers Section -->
-<section class="featured-section" id="beers">
-  <h2>Featured Biere ({{ filteredBeers.length }})</h2>
+<section class="featured-section">
+  <h2>Featured Biere ({{ beers.length }})</h2>
+  
+
   
   <div class="beer-grid">
-    @for(beer of filteredBeers; track beer.id) {
-      <app-beer-card [beer]="beer"></app-beer-card>
-    } @empty {
-      <mat-card class="no-results">
-        <mat-card-content>
-          <div class="no-results-content">
-            <mat-icon>sentiment_dissatisfied</mat-icon>
-            <h3>Keine Biere gefunden</h3>
-            <p>Versuche es mit anderen Filterkriterien!</p>
-          </div>
-        </mat-card-content>
-      </mat-card>
-    }
-  </div>
-</section>
+    @for(beer of beers; track beer.id) {
 
-<!-- Statistics Section -->
-<section class="stats-section">
-  <h2>Statistiken</h2>
-  <div class="stats-grid">
-    @for(stat of statistics; track stat.label) {
-      <mat-card class="stat-card">
-        <mat-card-content>
-          <div class="stat-content">
-            <mat-icon [ngStyle]="{'color': stat.color}">{{ stat.icon }}</mat-icon>
-            <h3>{{ stat.value }}</h3>
-            <p>{{ stat.label }}</p>
-          </div>
-        </mat-card-content>
-      </mat-card>
+      <!-- [beer] = beer binde die lokale Variable beer aus @for-Schleife 
+       an die Inputroperty der 
+       BeerCardComponent.-->
+
+      <app-beer-card [beer]="beer">
+
+      </app-beer-card>
     }
   </div>
 </section>

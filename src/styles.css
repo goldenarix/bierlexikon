@@ -2,3 +2,408 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+/* ===== RESET UND BASIS-STYLES ===== */
+/* Diese Regeln sorgen für konsistente Darstellung in allen Browsern */
+* {
+  box-sizing: border-box; /* Padding und Border werden in die Breite eingerechnet */
+  margin: 0;
+  padding: 0;
+}
+
+/* Root-Variables für einheitliche Farben und Abstände */
+:root {
+  /* Hauptfarben für das Bier-Thema */
+  --primary-color: #d4af37;        /* Goldenes Bier-Gelb */
+  --primary-dark: #b8941f;         /* Dunkleres Gold für Hover-Effekte */
+  --accent-color: #8b4513;         /* Warmes Braun für Akzente */
+  --background-light: #fefefe93;     /* Sehr helles Weiß */
+  --background-dark: #f8f6f0;      /* Cremiges Off-White */
+  
+  /* Graustufen für Text und Schatten */
+  --text-primary: #2c2c2c;         /* Dunkelgrau für Haupttext */
+  --text-secondary: #666666;       /* Mittelgrau für Zusatzinfos */
+  --text-light: #999999;           /* Hellgrau für Labels */
+  
+  /* Abstände - verwendbar mit var(--spacing-sm) */
+  --spacing-xs: 0.25rem;           /* 4px - sehr kleine Abstände */
+  --spacing-sm: 0.5rem;            /* 8px - kleine Abstände */
+  --spacing-md: 1rem;              /* 16px - normale Abstände */
+  --spacing-lg: 1.5rem;            /* 24px - große Abstände */
+  --spacing-xl: 2rem;              /* 32px - sehr große Abstände */
+  --spacing-xxl: 3rem;             /* 48px - section Abstände */
+  
+  /* Schatten für Tiefe */
+  --shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.15);
+  --shadow-heavy: 0 8px 16px rgba(0, 0, 0, 0.2);
+  
+  /* Border-Radius für konsistente Rundungen */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+}
+
+/* ===== GRUNDLEGENDE HTML-ELEMENTE ===== */
+html {
+  font-size: 16px; /* Basis für rem-Berechnungen */
+  scroll-behavior: smooth; /* Sanftes Scrollen für scrollToBeers() */
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6; /* Gute Lesbarkeit durch Zeilenhöhe */
+  color: var(--text-primary);
+  background-color: var(--background-light);
+  min-height: 100vh; /* Mindestens Vollbild-Höhe */
+}
+
+/* ===== TYPOGRAFIE ===== */
+/* Überschriften-Hierarchie für strukturierte Inhalte */
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+p {
+  margin-bottom: var(--spacing-md);
+  color: var(--text-secondary);
+}
+
+/* ===== LAYOUT-CONTAINER ===== */
+/* Globale Container-Klasse für konsistente Seitenränder */
+.container {
+  max-width: 1200px; /* Maximale Breite für große Bildschirme */
+  margin: 0 auto; /* Zentrierung */
+  padding: 0 var(--spacing-md); /* Seitenabstände */
+}
+
+/* Flexbox-Hilfsklass für häufige Layouts */
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== GRID-SYSTEME FÜR BIER-CARDS ===== */
+/* Responsive Grid für die Bier-Übersicht */
+.beer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+  margin-bottom: var(--spacing-xxl);
+}
+
+/* Spezielle Grid-Variante für Featured Beers (weniger Spalten) */
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-xl);
+  max-width: 900px; /* Begrenzte Breite für bessere Optik */
+  margin: 0 auto;
+}
+
+/* ===== SECTION-STYLES ===== */
+/* Einheitliche Section-Gestaltung */
+.section {
+  padding: var(--spacing-xxl) 0;
+}
+
+.section-hero {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: white;
+  text-align: center;
+  padding: var(--spacing-xxl) 0;
+}
+
+.section-content {
+  background-color: var(--background-light);
+}
+
+.section-alternate {
+  background-color: var(--background-dark);
+}
+
+/* ===== BUTTON-STYLES ===== */
+/* Basis-Button-Style für konsistente Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border: none;
+  border-radius: var(--border-radius-md);
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Sanfte Übergänge */
+  box-shadow: var(--shadow-light);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-2px); /* Leichter Hover-Effekt */
+}
+
+.btn-secondary {
+  background-color: white;
+  color: var(--text-primary);
+  border: 2px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* ===== CARD-KOMPONENTEN ===== */
+/* Basis-Card-Style für Bier-Cards und andere Karten */
+.card {
+  background: white;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-light);
+  overflow: hidden; /* Verhindert Überlauf bei Bildern */
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-heavy);
+  transform: translateY(-4px); /* Deutlicher Hover-Effekt für Cards */
+}
+
+.card-header {
+  padding: var(--spacing-lg);
+  border-bottom: 1px solid var(--background-dark);
+}
+
+.card-content {
+  padding: var(--spacing-lg);
+}
+
+.card-footer {
+  padding: var(--spacing-md) var(--spacing-lg);
+  background-color: var(--background-dark);
+  border-top: 1px solid var(--background-dark);
+}
+
+/* ===== FORM-ELEMENTE ===== */
+/* Styling für Input-Felder und Selects */
+.form-group {
+  margin-bottom: var(--spacing-lg);
+}
+
+.form-label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.form-control {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 2px solid var(--background-dark);
+  border-radius: var(--border-radius-md);
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1); /* Fokus-Ring */
+}
+
+/* ===== UTILITY-KLASSEN ===== */
+/* Häufig verwendete Hilfsklassen */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+.mb-xl { margin-bottom: var(--spacing-xl); }
+
+.mt-0 { margin-top: 0; }
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mt-xl { margin-top: var(--spacing-xl); }
+
+.p-sm { padding: var(--spacing-sm); }
+.p-md { padding: var(--spacing-md); }
+.p-lg { padding: var(--spacing-lg); }
+
+/* ===== RESPONSIVE DESIGN ===== */
+/* Tablet-Ansicht */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--spacing-sm);
+  }
+  
+  .beer-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  .section {
+    padding: var(--spacing-xl) 0;
+  }
+}
+
+/* Mobile-Ansicht */
+@media (max-width: 480px) {
+  .beer-grid {
+    grid-template-columns: 1fr; /* Nur eine Spalte auf sehr kleinen Bildschirmen */
+    gap: var(--spacing-sm);
+  }
+  
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  .btn {
+    padding: var(--spacing-sm);
+    font-size: 0.9rem;
+  }
+}
+
+/* ===== ANIMATION UND ÜBERGÄNGE ===== */
+/* Fade-in Animation für dynamische Inhalte */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Loading-Spinner für spätere asynchrone Operationen */
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--background-dark);
+  border-top: 4px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: var(--spacing-lg) auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ===== ACCESSIBILITY ===== */
+/* Verbesserungen für Barrierefreiheit */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus-Styles für Keyboard-Navigation */
+*:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* ===== ANGULAR MATERIAL ÜBERSCHREIBUNGEN ===== */
+/* Anpassungen für deine Material Design Komponenten */
+.mat-card {
+  box-shadow: var(--shadow-light) !important;
+  border-radius: var(--border-radius-lg) !important;
+}
+
+.mat-card:hover {
+  box-shadow: var(--shadow-medium) !important;
+}
+
+.mat-raised-button.mat-primary {
+  background-color: var(--primary-color) !important;
+}
+
+.mat-raised-button.mat-primary:hover {
+  background-color: var(--primary-dark) !important;
+}
+
+/* Custom Scrollbar für moderne Browser */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: var(--border-radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}

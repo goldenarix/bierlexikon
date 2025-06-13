@@ -109,41 +109,44 @@ export class BierlexikonService {
 
   constructor() { }
 
-  getAllBeers(): Observable<Beer[]> {
-    return of([...this.beers]).pipe(delay(500));
+  
+  getAllBeers(): Beer[] {
+    return this.beers;
   }
 
-  getBeerById(id: number): Observable<Beer | undefined> {
-    const beer = this.beers.find(b => b.id === id);
-    return of(beer).pipe(delay(300));
+  //einzelnes Bier oder undefined
+  getBeerById(id: number): Beer | undefined {
+    // Array.find() erste gefundene Element 
+    return this.beers.find(b => b.id === id);
   }
 
-  getBeersByType(type: string): Observable<Beer[]> {
+  // nach Biertyp filtern 
+  getBeersByType(type: string): Beer[] {
     if (!type) {
       return this.getAllBeers();
     }
-    const filteredBeers = this.beers.filter(beer => 
+    // ein neues Array ersztellen aber mit allen passenden bzw  gefilterten  Elementen
+    return this.beers.filter(beer => 
       beer.type.toLowerCase() === type.toLowerCase()
     );
-    return of(filteredBeers).pipe(delay(400));
   }
 
-  getBeerByName(name: string): Observable<Beer[]> {
+  // Suche nach den biernamen
+  getBeerByName(name: string): Beer[] {
     if (!name) {
-      return of([...this.beers]);
-    } else {
-      const filteredBeers = this.beers.filter(beer =>
-        beer.name.toLowerCase().includes(name.toLowerCase())
-      );
-      return of(filteredBeers).pipe(delay(300));
+      return this.beers;
     }
+    // mit includes() wird geprüft ob der gesuxhte Namestring im Biernamen enthalten ist
+    return this.beers.filter(beer =>
+      beer.name.toLowerCase().includes(name.toLowerCase())
+    );
   }
 
-
-  getFeaturedBeers(): Observable<Beer[]> {
-    const featured = this.beers
+  // Featured Biere 
+  getFeaturedBeers(): Beer[] {
+    // einfach sortieren nach Rating ( das höchste zuerst), dann die ersten 3 nehmen
+    return this.beers
       .sort((a, b) => b.rating - a.rating)
       .slice(0, 3);
-    return of(featured).pipe(delay(300));
   }
 }

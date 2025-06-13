@@ -34,21 +34,6 @@ export class BeerCardComponent {
     alert(`${beer.name} wurde zu deinen Favoriten hinzugefügt!`);
   }
 
-  shareBeer(beer: Beer): void {
-    if (navigator.share) {
-      navigator.share({
-        title: beer.name,
-        text: `Schau dir dieses Bier an: ${beer.name} von ${beer.brewery}`,
-        url: window.location.href
-      });
-    } else {
-      // Fallback für Browser ohne Web Share API
-      const text = `${beer.name} von ${beer.brewery} - ${beer.description}`;
-      navigator.clipboard.writeText(text);
-      alert('Bier-Info wurde in die Zwischenablage kopiert!');
-    }
-  }
-
   getStarArray(): boolean[] {
     const stars: boolean[] = [];
     const fullStars = Math.floor(this.beer.rating);

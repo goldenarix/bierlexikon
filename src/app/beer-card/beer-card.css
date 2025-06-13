@@ -1,118 +1,175 @@
 .beer-card {
+  background: #1a1a1a;
+  border-radius: 12px;
+  overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-bottom: 16px;
 }
 
 .beer-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.beer-content {
+  display: flex;
+  padding: 20px;
+  gap: 16px;
+  color: white;
+}
+
+/* Beer Image */
+.beer-image {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+}
+
+.beer-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Beer Info */
+.beer-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .beer-header {
-  margin-bottom: 1rem;
+  margin-bottom: 4px;
 }
 
-.beer-details {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.beer-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.beer-type {
-  background: #FF6B35;
+.beer-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
   color: white;
-  padding: 0.25rem 0.5rem;
-  border-radius: 12px;
+}
+
+.brewery-country {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin: 4px 0 0 0;
+}
+
+/* Beer Type Badge */
+.beer-type {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 16px;
   font-size: 0.8rem;
   font-weight: 500;
+  text-transform: uppercase;
   align-self: flex-start;
 }
 
+.type-lager { background: #FF6B35; color: white; }
+.type-weizen { background: #4CAF50; color: white; }
+.type-stout { background: #8B4513; color: white; }
+.type-pils { background: #2196F3; color: white; }
+.type-ipa { background: #FF9800; color: white; }
+
+/* Stats */
 .beer-stats {
   display: flex;
-  gap: 1rem;
-  font-size: 0.9rem;
-  color: #666;
+  gap: 12px;
+  margin: 4px 0;
 }
 
 .alcohol, .ibu {
-  background: #f5f5f5;
-  padding: 0.25rem 0.5rem;
-  border-radius: 8px;
+  background: #333;
+  color: #ccc;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.85rem;
   font-weight: 500;
 }
 
+/* Rating */
 .rating {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 4px;
+  margin: 4px 0;
 }
 
 .rating mat-icon {
-  font-size: 1.2rem;
-  width: 1.2rem;
-  height: 1.2rem;
+  font-size: 1.1rem;
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.star-filled {
+  color: #FFD700;
+}
+
+.star-empty {
+  color: #555;
 }
 
 .rating-text {
-  font-size: 0.9rem;
-  color: #666;
-  margin-left: 0.5rem;
+  font-size: 0.85rem;
+  color: #ccc;
+  margin-left: 8px;
 }
 
+/* Description */
 .beer-description {
-  color: #666;
+  color: #ccc;
+  font-size: 0.9rem;
   line-height: 1.4;
-  margin: 0;
-  font-size: 0.95rem;
+  margin: 8px 0;
+  flex-grow: 1;
 }
 
-mat-card-actions {
+/* Actions */
+.beer-actions {
   display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: auto;
 }
 
-mat-card-actions button {
-  flex: 1;
-  min-width: 100px;
+.info-btn {
+  color: #00BCD4;
+  font-weight: 500;
 }
 
-mat-card-actions a {
+.info-btn a {
   text-decoration: none;
   color: inherit;
 }
 
-/* Avatar Image */
-img[mat-card-avatar] {
-  border-radius: 8px;
-  object-fit: cover;
+.favorite-btn {
+  color: #00BCD4;
+  font-weight: 500;
 }
 
-/* Mobile */
+.favorite-btn mat-icon {
+  margin-right: 4px;
+  font-size: 1rem;
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Mobile Responsive */
 @media (max-width: 480px) {
-  .beer-details {
+  .beer-content {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
+    text-align: center;
   }
   
-  .beer-stats {
-    flex-direction: column;
-    gap: 0.5rem;
+  .beer-image {
+    align-self: center;
+    width: 80px;
+    height: 80px;
   }
   
-  mat-card-actions {
-    flex-direction: column;
-  }
-  
-  mat-card-actions button {
-    width: 100%;
+  .beer-actions {
+    justify-content: center;
   }
 }
